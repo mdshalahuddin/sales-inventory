@@ -92,8 +92,8 @@ class UserController extends Controller
                     return response()->json([
                         "status"=>"Success",
                         "message"=>"OTP Verification Successfully",
-                        "token"=>$token
-                    ],200);
+
+                    ],200)->cookie("token",$token,60*24*30);
                 }else{
                     return response()->json([
                         "status"=>"Failed",
@@ -136,6 +136,7 @@ return view('pages.auth.send-otp-page');
 }
 
 function VerifyOtpPage(){
+    return view('pages.auth.verify-otp-page');
 
 }
 
