@@ -141,6 +141,7 @@ function VerifyOtpPage(){
 }
 
 function ResetPasswordPage(){
+    return view('pages.auth.reset-pass-page');
 
 }
 

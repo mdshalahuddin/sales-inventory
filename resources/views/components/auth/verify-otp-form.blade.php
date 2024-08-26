@@ -8,7 +8,7 @@
                     <label>4 Digit code here</label>
                     <input id="otp" placeholder="Code" class="form-control" type="text"/>
                     <br/>
-                    <button onclick="VerifyOTP()"  class="btn w-100 float-end bg-gradient-primary">Next</button>
+                    <button onclick="VerifyOtp()"  class="btn w-100 float-end bg-gradient-primary">Next</button>
                 </div>
             </div>
         </div>
@@ -16,8 +16,31 @@
 </div>
 
 <script>
-    function VerifyOTP(){
+    async function VerifyOtp() {
+        let otp = document.getElementById('otp').value;
+        if(otp.length !==4){
+           errorToast('Invalid OTP')
+        }
+        else{
+            showLoader();
+            let res=await axios.post('/verify-otp', {
+                otp: otp,
+                email:sessionStorage.getItem('email')
+            })
+            hideLoader();
 
-
+            if(res.status===200 && res.data['status']==='Success'){
+                successToast(res.data['message'])
+                sessionStorage.clear();
+                setTimeout(() => {
+                    window.location.href='/resetPasswordpage'
+                }, 1000);
+            }
+            else{
+                errorToast(res.data['message'])
+            }
+        }
     }
+</script>
+
 </script>
