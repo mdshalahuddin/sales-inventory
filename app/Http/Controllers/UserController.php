@@ -132,7 +132,7 @@ return view('pages.auth.registration-pages');
 }
 
 function SendOtpPage(){
-
+return view('pages.auth.send-otp-page');
 }
 
 function VerifyOtpPage(){
