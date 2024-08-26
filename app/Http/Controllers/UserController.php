@@ -44,13 +44,13 @@ class UserController extends Controller
              return response()->json([
                  "status"=>"success",
                  "message"=>"User Login successfully",
-                 "token"=>$token
-             ],200);
+
+             ],200)->cookie('token',$token,60*24*30,'/');
          }else{
              return response()->json([
                  "status"=>"Failed",
                  "message"=>"unauthorized"
-             ],200);
+             ],404);
          }
 
             }
@@ -128,7 +128,7 @@ return view('pages.auth.login-page');
 }
 
 function RegistrationPage(){
-
+return view('pages.auth.registration-pages');
 }
 
 function SendOtpPage(){

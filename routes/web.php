@@ -27,7 +27,7 @@ Route::post('/reset-password', [UserController::class,'ResetPassword'])->middlew
 
 Route::get('/',[HomeController::class,'HomePage']);
 Route::get('/userLogin',[UserController::class,'LoginPage']);
-Route::get('/registrationpage',[UserController::class,'RegistrationPage']);
+Route::get('/userRegistration',[UserController::class,'RegistrationPage']);
 Route::get('/sendOtppage',[UserController::class,'SendOtpPage']);
 Route::get('/verifyOtpage',[UserController::class,'VerifyOtpPage']);
 Route::get('/resetPasswordpage',[UserController::class,'ResetPasswordPage']);
